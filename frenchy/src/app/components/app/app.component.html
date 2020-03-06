@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Frenchy</h1>
+
+  <hr>
+
+  <form (ngSubmit)="onSubmit()" #addPhraseForm="ngForm">
+    <div class="form-group">
+      <label for="englishPhrase">English</label>
+      <input type="text" class="form-control" id="englishPhrase" required [(ngModel)]="phrase.englishPhrase"
+        name="englishPhrase" #englishPhrase="ngModel">
+      <div [hidden]="englishPhrase.valid || englishPhrase.pristine" class="alert alert-danger">
+        English phrase is required
+      </div>
+    </div>
+
+    <br/>
+
+    <div class="form-group">
+      <label for="frenchPhrase">French</label>
+      <input type="text" class="form-control" id="frenchPhrase" required [(ngModel)]="phrase.frenchPhrase"
+        name="frenchPhrase" #frenchPhrase="ngModel">
+      <div [hidden]="frenchPhrase.valid || frenchPhrase.pristine" class="alert alert-danger">
+        French phrase is required
+      </div>
+    </div>
+
+    <br />
+
+    <button id="submit-button" type="submit" class="btn btn-success"
+      [disabled]="!addPhraseForm.form.valid">Submit</button>
+
+    <hr>
+
+    <h2>Phrases</h2>
+
+    <div class="phrase" *ngFor="let phrase of phrases$ | async">
+      <div>English: <cite>{{phrase.englishPhrase}}</cite></div>
+      <div>French:  <cite>{{phrase.frenchPhrase}}</cite></div>
+      <p>Added: {{ phrase.createdDate }}</p>
+    </div>
+  </form>
+</div>
