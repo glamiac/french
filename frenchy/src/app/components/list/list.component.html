@@ -1,0 +1,9 @@
+<h2>Phrases</h2>
+<hr/>
+
+  <div class="phrase" *ngFor="let phrase of phrases$ | async">
+    <div>English: <cite>{{phrase.englishPhrase}}</cite></div>
+    <div>French:  <cite>{{phrase.frenchPhrase}}</cite></div>
+    <p>Added: {{ phrase.createdDate }}</p>
+    <hr/>
+  </div>
