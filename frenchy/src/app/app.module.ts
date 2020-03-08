@@ -9,10 +9,14 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
+import { AddComponent } from './components/add/add.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
