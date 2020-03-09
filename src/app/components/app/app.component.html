@@ -2,10 +2,15 @@
   <h1>Frenchy</h1>
   <hr>
 
-  <h3>Add Phrase</h3>
-  <app-add></app-add>
+  <nav>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/add">Add Phrase</a>
+    <a routerLink="/list">Phrase List</a>
+    <a routerLink="/quiz">Quiz</a>
+  </nav>
 
-  <h3>Saved Phrases</h3>
-  <app-list></app-list>
+  <hr/>
+
+<router-outlet></router-outlet>
 
 </div>

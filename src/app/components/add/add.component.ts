@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseService } from './../../services/firebase/firebase.service';
 import { Phrase } from '../../models/phrase';
 
@@ -12,11 +13,12 @@ export class AddComponent {
   phrase: Phrase = new Phrase();
 
   constructor(
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private router: Router
   ) { }
 
   onSubmit() {
-    const key = this.firebaseService.addPhrase(this.phrase);
-    console.log(key);
-  }
+    this.firebaseService.addPhrase(this.phrase);
+    this.router.navigate(['/list']);
+     }
 }
