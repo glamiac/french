@@ -19,14 +19,18 @@ export class QuizComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.nextQuestion();
+    this.nextQuestion(null);
   }
 
   showAnswer() {
     this.isAnswerVisible = true;
   }
 
-  nextQuestion() {
+  nextQuestion(phrase: Phrase) {
+    if (phrase) {
+      this.firebaseService.updateQuizCount(phrase)
+    }
+
     const list = this.firebaseService.getQuizQuestion(1);
 
     this.phrases$ = list.snapshotChanges().pipe(

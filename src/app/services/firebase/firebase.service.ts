@@ -35,6 +35,14 @@ export class FirebaseService {
     return this.db.list<Phrase>('/phrases').push(phrase).key;
   }
 
+  updateQuizCount(phrase: Phrase): void {
+    this.db.object('phrases/' + phrase.key).set({
+      createdDate: phrase.createdDate,
+      englishPhrase: phrase.englishPhrase,
+      frenchPhrase: phrase.frenchPhrase,
+      quizCount: phrase.quizCount + 1});
+  }
+
   getQuizQuestion(count: number): AngularFireList<Phrase> {
     return this.db.list<Phrase>('/phrases', ref => ref
       .orderByChild('quizCount')
