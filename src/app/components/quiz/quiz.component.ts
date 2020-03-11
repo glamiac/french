@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from './../../services/firebase/firebase.service';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Phrase } from '../../models/phrase';
 
 @Component({
   selector: 'app-quiz',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizComponent implements OnInit {
 
-  constructor() { }
+  isAnswerVisible: boolean;
+  phrases$: Observable<Phrase[]>;
 
-  ngOnInit(): void {
+  constructor(
+    private firebaseService: FirebaseService
+  ) { }
+
+  ngOnInit() {
+    this.nextQuestion();
   }
 
+  showAnswer() {
+    this.isAnswerVisible = true;
+  }
+
+  nextQuestion() {
+    const list = this.firebaseService.getQuizQuestion(1);
+
+    this.phrases$ = list.snapshotChanges().pipe(
+      tap(x => console.log(`getQuizQuestion returned: ${x.length} phrases.`)),
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() })).reverse()
+      )
+    );
+  }
 }

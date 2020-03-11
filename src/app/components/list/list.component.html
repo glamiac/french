@@ -1,5 +1,6 @@
 <div class="phrase" *ngFor="let phrase of phrases$ | async">
   <div>English: <cite>{{phrase.englishPhrase}}</cite></div>
   <div>French: <cite>{{phrase.frenchPhrase}}</cite></div>
-  <span>Added: {{ phrase.createdDate }}</span>
+  <div>Added: {{ phrase.createdDate }}</div>
+  <div>Quizzed: {{ phrase.quizCount }} times</div>
 </div>

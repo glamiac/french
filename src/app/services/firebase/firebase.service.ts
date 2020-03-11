@@ -34,4 +34,10 @@ export class FirebaseService {
   addPhrase(phrase: Phrase): string {
     return this.db.list<Phrase>('/phrases').push(phrase).key;
   }
+
+  getQuizQuestion(count: number): AngularFireList<Phrase> {
+    return this.db.list<Phrase>('/phrases', ref => ref
+      .orderByChild('quizCount')
+      .limitToFirst(count));
+  }
 }

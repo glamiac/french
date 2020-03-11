@@ -1,1 +1,8 @@
-<p>quiz works!</p>
+<div class="phrase" *ngFor="let phrase of phrases$ | async">
+    <div>French: <cite>{{phrase.frenchPhrase}}</cite></div>
+    <div *ngIf="isAnswerVisible">English: <cite>{{phrase.englishPhrase}}</cite></div>
+
+    <button (click)="showAnswer()">Show Answer</button>
+
+    <button (click)="nextQuestion()">Next Question</button>
+</div>

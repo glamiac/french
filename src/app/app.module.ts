@@ -11,12 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { AddComponent } from './components/add/add.component';
 import { ListComponent } from './components/list/list.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddComponent,
-    ListComponent
+    ListComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
