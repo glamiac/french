@@ -28,7 +28,7 @@ export class QuizComponent implements OnInit {
 
   nextQuestion(phrase: Phrase) {
     if (phrase) {
-      this.firebaseService.updateQuizCount(phrase)
+      this.firebaseService.updateQuizCount(phrase);
     }
 
     const list = this.firebaseService.getQuizQuestion(1);
